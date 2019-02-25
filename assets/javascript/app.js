@@ -6,7 +6,7 @@ var qSet = [{
     opB: "Knox",
     opC: "Shelby",
     opD: "Montgomery",
-    answer: "A"
+    answer: "C"
 },
 {
     question: "The Civil War 'Battle Above The Clouds' was fought in which county?",
@@ -33,7 +33,7 @@ var qSet = [{
     answer: "B"
 },
 {
-    question: "The national Cornbread Festival occurs annual in which county?",
+    question: "The national Cornbread Festival occurs annually in which county?",
     opA: "Robertson",
     opB: "Marion",
     opC: "Grundy",
@@ -70,7 +70,7 @@ var qSet = [{
     opB: "Campbell",
     opC: "Grainger",
     opD: "Hawkins",
-    answer: "D"
+    answer: "A"
 }
 ]
 
@@ -90,12 +90,18 @@ var clockRunning = false;
 
 function renderQuestion() {
     question.text(qSet[0].question);
-    optionA.text(qSet[0].opA);
-    optionB.text(qSet[0].opB);
-    optionC.text(qSet[0].opC);
-    optionD.text(qSet[0].opD);
+    optionA.html(qSet[0].opA);
+    optionB.html(qSet[0].opB);
+    optionC.html(qSet[0].opC);
+    optionD.html(qSet[0].opD);
+    question.show();
+    optionA.show();
+    optionB.show();
+    optionC.show();
+    optionD.show();
 }
 
+//***************TIMERFUNCTIONS***************//
 function begin() {
 
     // DONE: Use setInterval to start the count here and set the clock to running.
@@ -138,6 +144,7 @@ function timeConverter(t) {
     return minutes + ":" + seconds;
 }
 
+//***************STARTFUNCTION***************//
 start.click(function () {
     start.hide();
     renderQuestion();

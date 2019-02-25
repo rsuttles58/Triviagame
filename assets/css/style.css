@@ -58,11 +58,11 @@ body{
     background-color: darkgrey;
     position:fixed;
     z-index:100;
-    height:38vw;
+    height:15vw;
     width:30vw;
     border: 2px solid black;
     right: 12vw;
-    top:5vw;
+    top:15vw;
     text-align:center;
 }
 
