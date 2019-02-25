@@ -75,8 +75,9 @@ body{
     display:none;
 }
 
-.hidden:hover{
+button:hover{
     background-color:navy;
+    color:white;
 }
 
 /* Time permitting figure out how to add stars to map. */

@@ -1,5 +1,4 @@
 To-Do
-1. Build Timer
 2. Question "Resolution"
 3. Render Questions.
 4. Function Tie-ups
