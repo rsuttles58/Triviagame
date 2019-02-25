@@ -58,7 +58,7 @@ body{
     background-color: darkgrey;
     position:fixed;
     z-index:100;
-    height:15vw;
+    height:25vw;
     width:30vw;
     border: 2px solid black;
     right: 12vw;
@@ -79,6 +79,11 @@ button:hover{
     color:white;
 }
 
+.option{
+    text-align:left;
+    margin:2px;
+}
+
 /* Time permitting figure out how to add stars to map. */
 .starone{
     margin: 50px 0;
@@ -90,9 +95,9 @@ button:hover{
     border-right: 100px solid transparent;
     border-bottom: 70px solid white;
     border-left: 100px solid transparent;
-    transform: rotate(24deg);
-    top: 6vw;
-    left: 5vw;
+    transform: rotate(19deg);
+    top: 7vw;
+    left: 4vw;
 }
 
 .starone:before{
