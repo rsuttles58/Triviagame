@@ -55,7 +55,7 @@ var qSet = [{
     support: "You can smell chocolate all over Cleveland (Bradley County)."
 },
 {
-    question: "If you went for a stroll down Beele Street, which county would you be in?",
+    question: "If you went for a stroll down Beale Street, which county would you be in?",
     opA: "Shelby",
     opB: "Unicoi",
     opC: "Hardeman",
@@ -108,6 +108,7 @@ var followUp = $("#support");
 var i = 0;
 var button = $(".option");
 var trans;
+var converted;
 
 
 //***************FUNCTIONS***************//
@@ -151,7 +152,7 @@ function stop() {
 
 //class activity rip-off.  Wasn't sure how to rebuild.
 function count() {
-    var converted = timeConverter(time);
+    converted = timeConverter(time);
     console.log(converted);
     $("#timer").text(converted);
     time--;
