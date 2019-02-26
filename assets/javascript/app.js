@@ -69,7 +69,7 @@ var qSet = [{
     opB: "Knox",
     opC: "Cocke",
     opD: "Williamson",
-    answer: "B",
+    answer: "D",
     support: "Franklin and Brentwood both reside in Williamson County."
 },
 {
@@ -80,15 +80,23 @@ var qSet = [{
     opD: "Hawkins",
     answer: "A",
     support: "The Bristol track has been open since 1961."
+},
+{
+    question: "What county do you have to visit to see beautiful Reelfoot Lake?",
+    opA: "Jefferson",
+    opB: "Claiborne",
+    opC: "Lake",
+    opD: "Union",
+    answer: "C",
+    support: "Reelfoot Lake is home to a wide variety of wildlife including bald eagles."
 }];
 
 var correct = 0;
-var incorrect = 0;
-// var score = (correct / 10) * 100
+var score = (correct / 10) * 10;
 var start = $("#startQ");
-var question = $("#question");
+var q = $("#question");
 var timer = $("#timer");
-var time = 30;
+var time = 20;
 var optionA = $("#optionA");
 var optionB = $("#optionB");
 var optionC = $("#optionC");
@@ -101,15 +109,16 @@ var i = 0;
 var button = $(".option");
 var trans;
 
+
 //***************FUNCTIONS***************//
 
 function renderQuestion() {
-    question.text(qSet[i].question);
+    q.text(qSet[i].question);
     optionA.html(qSet[i].opA);
     optionB.html(qSet[i].opB);
     optionC.html(qSet[i].opC);
     optionD.html(qSet[i].opD);
-    question.show();
+    q.show();
     optionA.show();
     optionB.show();
     optionC.show();
@@ -117,11 +126,15 @@ function renderQuestion() {
 }
 
 function transition() {
-    trans = setTimeout(renderQuestion, 3000);
+    trans = setTimeout(renderQuestion, 5000);
     i++;
     renderQuestion();
     begin();
-  }
+}
+
+function endGame() {
+    $("#end").text("Congratulations, you got " + correct + " out of 10 questions correct.");
+}
 //***************TIMERFUNCTIONS***************//
 function begin() {
 
@@ -138,12 +151,11 @@ function stop() {
 
 //class activity rip-off.  Wasn't sure how to rebuild.
 function count() {
-    time = 30;
-    time--;
     var converted = timeConverter(time);
     console.log(converted);
     $("#timer").text(converted);
-    if(converted === "00:00"){
+    time--;
+    if (converted === "00:00") {
         stop();
     }
 }
@@ -168,7 +180,7 @@ function timeConverter(t) {
 
 // function setTimeout
 //***************STARTFUNCTION***************//
-start.click(function(){
+start.click(function () {
     start.hide();
     renderQuestion();
     count();
@@ -176,19 +188,37 @@ start.click(function(){
     begin();
 })
 
-button.click(function(){
-    var choice= $(this).attr("data-value");
-    if (choice === qSet[i].answer){
-        followUp.text("Correct!" + qSet[i].support);
+button.click(function () {
+    var choice = $(this).attr("data-value");
+    if (choice === qSet[i].answer) {
+        followUp.text("Correct! " + qSet[i].support);
+        followUp.show();
         stop();
         correct++;
+        console.log(correct);
+        time = 20;
+        if (i + 1 === qSet.length) {
+            endGame();
+        }
         transition();
 
-    } else {
-        followUp.text("Incorrect."+ qSet[i].support);
-        followUp.hide();
+    } else if (converted === "00:00"){
+        followUp.text("Incorrect. " + qSet[i].support);
+        followUp.show();
         stop();
-        incorrect++;
+        time = 20;
+        if (i + 1 === qSet.length) {
+            endGame();
+            transition();
+        }
+    } else {
+        followUp.text("Incorrect. " + qSet[i].support);
+        followUp.show();
+        stop();
+        time = 20;
+        if (i + 1 === qSet.length) {
+            endGame();
+        }
         transition();
     }
 });

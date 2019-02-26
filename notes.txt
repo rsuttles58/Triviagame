@@ -1,5 +1,3 @@
 To-Do
-2. Question "Resolution"
-3. Render Questions.
-4. Function Tie-ups
-5. Build on-click for answer buttons (create class="answer")?
+1. Issue with time running out and nothing happening. 
+2.  Smoother transition.  Game currently flies into next question without much resolution
