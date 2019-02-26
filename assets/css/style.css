@@ -74,6 +74,10 @@ body{
     display:none;
 }
 
+#support{
+    margin:5px;
+}
+
 button:hover{
     background-color:navy;
     color:white;

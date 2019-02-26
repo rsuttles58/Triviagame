@@ -80,11 +80,11 @@ var qSet = [{
     opD: "Hawkins",
     answer: "A",
     support: "The Bristol track has been open since 1961."
-}
-]
+}];
 
 var correct = 0;
 var incorrect = 0;
+// var score = (correct / 10) * 100
 var start = $("#startQ");
 var question = $("#question");
 var timer = $("#timer");
@@ -95,17 +95,20 @@ var optionC = $("#optionC");
 var optionD = $("#optionD");
 var clockRunning = false;
 var responseCorrect = "That is correct!";
-var responseFalse = "Incorrect."
+var responseFalse = "Incorrect.";
 var followUp = $("#support");
+var i = 0;
+var button = $(".option");
+var trans;
 
 //***************FUNCTIONS***************//
 
 function renderQuestion() {
-    question.text(qSet[0].question);
-    optionA.html(qSet[0].opA);
-    optionB.html(qSet[0].opB);
-    optionC.html(qSet[0].opC);
-    optionD.html(qSet[0].opD);
+    question.text(qSet[i].question);
+    optionA.html(qSet[i].opA);
+    optionB.html(qSet[i].opB);
+    optionC.html(qSet[i].opC);
+    optionD.html(qSet[i].opD);
     question.show();
     optionA.show();
     optionB.show();
@@ -113,6 +116,12 @@ function renderQuestion() {
     optionD.show();
 }
 
+function transition() {
+    trans = setTimeout(renderQuestion, 3000);
+    i++;
+    renderQuestion();
+    begin();
+  }
 //***************TIMERFUNCTIONS***************//
 function begin() {
 
@@ -129,6 +138,7 @@ function stop() {
 
 //class activity rip-off.  Wasn't sure how to rebuild.
 function count() {
+    time = 30;
     time--;
     var converted = timeConverter(time);
     console.log(converted);
@@ -156,8 +166,9 @@ function timeConverter(t) {
     return minutes + ":" + seconds;
 }
 
+// function setTimeout
 //***************STARTFUNCTION***************//
-start.click(function () {
+start.click(function(){
     start.hide();
     renderQuestion();
     count();
@@ -165,3 +176,19 @@ start.click(function () {
     begin();
 })
 
+button.click(function(){
+    var choice= $(this).attr("data-value");
+    if (choice === qSet[i].answer){
+        followUp.text("Correct!" + qSet[i].support);
+        stop();
+        correct++;
+        transition();
+
+    } else {
+        followUp.text("Incorrect."+ qSet[i].support);
+        followUp.hide();
+        stop();
+        incorrect++;
+        transition();
+    }
+});
