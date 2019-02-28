@@ -1,5 +1,5 @@
 //***************VARIABLES************//
-
+//Define question set.
 var qSet = [{
     question: "What county has the largest population?",
     opA: "Davidson",
@@ -91,6 +91,8 @@ var qSet = [{
     support: "Reelfoot Lake is home to a wide variety of wildlife including bald eagles."
 }];
 
+//Globally defined variables.  I could definitely do a better job of trying to keep these in tighter execution context(scope) 
+//but generally find it more manageable to keep variables global for access purposes.
 var correct = 0;
 var score = (correct / 10) * 10;
 var start = $("#startQ");
@@ -112,7 +114,7 @@ var converted;
 
 
 //***************FUNCTIONS***************//
-
+//function that renders the questions and then shows them on the screen.  These elements are hidden by default on the page.
 function renderQuestion() {
     q.text(qSet[i].question);
     optionA.html(qSet[i].opA);
@@ -139,7 +141,6 @@ function endGame() {
 //***************TIMERFUNCTIONS***************//
 function begin() {
 
-    // DONE: Use setInterval to start the count here and set the clock to running.
     if (!clockRunning) {
         intervalId = setInterval(count, 1000);
         clockRunning = true;
@@ -150,7 +151,6 @@ function stop() {
     clockRunning = false;
 }
 
-//class activity rip-off.  Wasn't sure how to rebuild.
 function count() {
     converted = timeConverter(time);
     console.log(converted);
@@ -158,6 +158,14 @@ function count() {
     time--;
     if (converted === "00:00") {
         stop();
+        followUp.text("Incorrect. " + qSet[i].support);
+        followUp.show();
+        stop();
+        time = 20;
+        if (i + 1 === qSet.length) {
+            endGame();
+        }
+        transition();
     }
 }
 
@@ -203,15 +211,6 @@ button.click(function () {
         }
         transition();
 
-    } else if (converted === "00:00"){
-        followUp.text("Incorrect. " + qSet[i].support);
-        followUp.show();
-        stop();
-        time = 20;
-        if (i + 1 === qSet.length) {
-            endGame();
-            transition();
-        }
     } else {
         followUp.text("Incorrect. " + qSet[i].support);
         followUp.show();
