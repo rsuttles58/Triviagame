@@ -14,3 +14,4 @@ This simple trivia game uses jQuery heavily to render the changing questions to 
 The Tennessee state flag was custom coded in plain CSS.
 
 ![Tennessee Flag](/av/TNFLag.JPG)
+Format: ![Alt Text](url)
