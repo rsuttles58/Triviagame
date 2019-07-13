@@ -1,7 +1,6 @@
-
 //***************VARIABLES************//
 //Define question set.
-let qSet = [{
+var qSet = [{
     question: "What county has the largest population?",
     opA: "Davidson",
     opB: "Knox",
@@ -94,29 +93,29 @@ let qSet = [{
 
 //Globally defined variables.  I could definitely do a better job of trying to keep these in tighter execution context(scope) 
 //but generally find it more manageable to keep variables global for access purposes.
-let correct = 0;
-let score = (correct / 10) * 10;
-let start = $("#startQ");
-let q = $("#question");
-let timer = $("#timer");
-let time = 20;
-let optionA = $("#optionA");
-let optionB = $("#optionB");
-let optionC = $("#optionC");
-let optionD = $("#optionD");
-let clockRunning = false;
-let responseCorrect = "That is correct!";
-let responseFalse = "Incorrect.";
-let followUp = $("#support");
-let i = 0;
-let button = $(".option");
-let trans;
-let converted;
+var correct = 0;
+var score = (correct / 10) * 10;
+var start = $("#startQ");
+var q = $("#question");
+var timer = $("#timer");
+var time = 20;
+var optionA = $("#optionA");
+var optionB = $("#optionB");
+var optionC = $("#optionC");
+var optionD = $("#optionD");
+var clockRunning = false;
+var responseCorrect = "That is correct!";
+var responseFalse = "Incorrect.";
+var followUp = $("#support");
+var i = 0;
+var button = $(".option");
+var trans;
+var converted;
 
 
 //***************FUNCTIONS***************//
 //function that renders the questions and then shows them on the screen.  These elements are hidden by default on the page.
-const renderQuestion = () => {
+function renderQuestion() {
     q.text(qSet[i].question);
     optionA.html(qSet[i].opA);
     optionB.html(qSet[i].opB);
@@ -129,30 +128,30 @@ const renderQuestion = () => {
     optionD.show();
 }
 
-const transition = () =>{
+function transition() {
     trans = setTimeout(renderQuestion, 5000);
     i++;
     renderQuestion();
     begin();
 }
 
-const endGame = () => {
+function endGame() {
     $("#end").text("Congratulations, you got " + correct + " out of 10 questions correct.");
 }
 //***************TIMERFUNCTIONS***************//
-const begin = () => {
+function begin() {
 
     if (!clockRunning) {
         intervalId = setInterval(count, 1000);
         clockRunning = true;
     }
 }
-const stop = () => {
+function stop() {
     clearInterval(intervalId);
     clockRunning = false;
 }
 
-const count = () => {
+function count() {
     converted = timeConverter(time);
     console.log(converted);
     $("#timer").text(converted);
@@ -170,7 +169,7 @@ const count = () => {
     }
 }
 
-const timeConverter = t => {
+function timeConverter(t) {
     var minutes = Math.floor(t / 60);
     var seconds = t - (minutes * 60);
 
@@ -190,7 +189,7 @@ const timeConverter = t => {
 
 // function setTimeout
 //***************STARTFUNCTION***************//
-start.click( () => {
+start.click(function () {
     start.hide();
     renderQuestion();
     count();
@@ -198,7 +197,7 @@ start.click( () => {
     begin();
 })
 
-button.click(() => {
+button.click(function () {
     var choice = $(this).attr("data-value");
     if (choice === qSet[i].answer) {
         followUp.text("Correct! " + qSet[i].support);
