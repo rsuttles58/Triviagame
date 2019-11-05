@@ -140,12 +140,12 @@ function endGame() {
 }
 //***************TIMERFUNCTIONS***************//
 function begin() {
-
     if (!clockRunning) {
         intervalId = setInterval(count, 1000);
         clockRunning = true;
     }
 }
+
 function stop() {
     clearInterval(intervalId);
     clockRunning = false;
