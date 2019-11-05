@@ -5,10 +5,10 @@ Tennessee Trivia is a simple jQuery trivia that tests the users knowledge of Ten
 [Link to Deployed TriviaGame](https://rsuttles58.github.io/Triviagame/)
 
 ## Technology Used
-*Javascript
-*jQuery
-*HTML
-*CSS-Heavily Customized
+* Javascript
+* jQuery
+* HTML
+* CSS-Heavily Customized
 
 ## Project Technical Specs
 This simple trivia game uses jQuery heavily to render the changing questions to the page.  Additionally, timers are used to manage the time allowance for each question and to move to the next question if no answer is chosen.  

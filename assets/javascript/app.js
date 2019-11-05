@@ -112,7 +112,6 @@ var button = $(".option");
 var trans;
 var converted;
 
-
 //***************FUNCTIONS***************//
 //function that renders the questions and then shows them on the screen.  These elements are hidden by default on the page.
 function renderQuestion() {
