@@ -20,20 +20,6 @@ body{
     font-weight: bold;
 }
 
-#holder{
-    background-color:navy;
-    height:38vw;
-    width:38vw;
-    border-radius:50%;
-    z-index:2;
-    top:49.5%;
-    left:49.5%;
-    margin-top: 4px;
-    margin-left: 4px;
-    position:fixed;
-    transform: translate(-50%, -50%);
-}
-
 .sidebar{
     height: 100%; 
     width: 4vw; 
@@ -62,9 +48,11 @@ body{
     background-color: darkgrey;
     position:fixed;
     z-index:100;
-    height:26vw;
-    width:30vw;
-    border: 2px solid black;
+    min-height:26vw;
+    max-width:30vw;
+    border: 2px solid rgb(72, 35, 41);
+    border-radius: 4px;
+    box-shadow: 0px 10px 20px -5px rgb(72, 35, 41);
     right: 12vw;
     top:15vw;
     text-align:center;
@@ -72,6 +60,7 @@ body{
 
 .quiztitle{
     font-weight:bold;
+    font-size: 5vmin
 }
 
 .hidden{
@@ -81,10 +70,16 @@ body{
 #support{
     margin:5px;
 }
-
+button{
+    border-radius: 4px;
+    border: 0.5px solid navy;
+}
 button:hover{
     background-color:navy;
     color:white;
+}
+button:focus{
+    outline-color: red;
 }
 
 .option{
@@ -93,7 +88,80 @@ button:hover{
 }
 
 /* Time permitting figure out how to add stars to map. */
+
+/* Start clip path option*/
+
+#holder{
+    background-color:navy;
+    height:38vw;
+    width:38vw;
+    border-radius:50%;
+    z-index:2;
+    top:49.5%;
+    left:49.5%;
+    margin-top: 4px;
+    margin-left: 4px;
+    position:fixed;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    contain: content;
+}
 .starone{
+    background-color: white;
+    width:18vmax;
+    height:18vmax;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: relative;
+    left: 3%;
+    top: 10%;
+    transform: rotate(-20deg);
+    position: fixed;
+}
+@media screen and (max-width: 640px){
+    .starone{
+        width: 12vmax;
+        height: 12vmax;
+    }
+}
+
+
+.startwo{
+    background-color: white;
+    width:18vmax;
+    height:18vmax;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: relative;
+    left:27%;
+    top: 54%;
+    position: fixed;
+}
+@media screen and (max-width: 640px){
+    .startwo{
+        width: 12vmax;
+        height: 12vmax;
+    }
+}
+.starthree{
+    background-color: white;
+    width:18vmax;
+    height:18vmax;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    position: relative;
+    left: 50%;
+    bottom: 40%;
+    transform: rotate(30deg);
+    position: fixed;
+}
+@media screen and (max-width: 640px){
+    .starthree{
+        width: 12vmax;
+        height: 12vmax;
+    }
+}
+
+
+/* Time permitting figure out how to add stars to map. */
+/* .starone{
     margin: 50px 0;
     position: relative;
     display: block;
@@ -221,4 +289,4 @@ button:hover{
     transform: rotate(-70deg);
     content: '';
 } 
-
+ */
